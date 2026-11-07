@@ -2,14 +2,23 @@ package ar.edu.unahur.obj2.catering;
 
 public class Servicio implements Propuesta {
     private final String nombre;
-    private final double precio;
+    private double precio;
 
     public Servicio(String nombre, double precio) {
+        validarPrecio(precio);
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
+    public void actualizarPrecio(double nuevoPrecio) {
+        validarPrecio(nuevoPrecio);
+        this.precio = nuevoPrecio;
+    }
+
+    private static void validarPrecio(double precio) {
         if (precio < 0) {
             throw new PrecioNegativoException(precio);
         }
-        this.nombre = nombre;
-        this.precio = precio;
     }
 
     @Override

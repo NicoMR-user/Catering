@@ -45,4 +45,9 @@ public class Menu implements Propuesta{
         propuesta.add(unaPropuesta);
     }
 
+    public void quitar(Propuesta unaPropuesta) {
+        if (!propuesta.remove(unaPropuesta)) {
+            throw new PropuestaNoIncluidaException(unaPropuesta.descripcion());
+        }
+    }
 }
